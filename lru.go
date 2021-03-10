@@ -58,3 +58,36 @@ func (l *Lru) Set(key interface{}, value interface{}) error {
 	return nil
 }
 
+func (l *Lru)Get(key interface{}) (value interface{}, ok bool){
+	if l.cache == nil {
+		return
+	}
+	mu.Lock()
+	defer mu.Unlock()
+	if element, ok := l.cache[key]; ok {
+		l.l.MoveToFront(element)
+		return element.Value.(*Node).Value, true
+	}
+	return
+}
+
+func (l *Lru)Del(key interface{}) (ok bool){
+	if l.cache == nil {
+		return false
+	}
+	mu.Lock()
+	defer mu.Unlock()
+	if element, ok := l.cache[key]; ok{
+		delete(l.cache, element)
+		if e := l.l.Back(); e != nil{
+			l.l.Remove(e)
+			delete(l.cache, key)
+			if l.Call != nil {
+				node := e.Value.(*Node)
+				l.Call(node.Key, node.Value)
+				return true
+			}
+		}
+	}
+	return false
+}
