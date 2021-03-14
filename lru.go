@@ -20,6 +20,7 @@ type Node struct {
 
 var mu *sync.Mutex
 
+//构造函数
 func NewLru(n int) *Lru{
 	return &Lru{
 		Max: n,
