@@ -21,7 +21,7 @@ func(n *Node) Push(value interface{}){
 	Size++
 }
 
-func(n *Node) Pop() (interface{}){
+func(n *Node) Pop() interface{} {
 	if Size == 0 {
 		return 0
 	}
