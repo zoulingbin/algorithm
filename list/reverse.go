@@ -14,7 +14,7 @@ func Reverse(head *ListNode) *ListNode{
 	for cur != nil{
 		cur.Next, pre, cur = pre, cur, cur.Next
 	}
-	return head
+	return pre
 }
 
 //构建链表
