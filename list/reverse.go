@@ -17,6 +17,20 @@ func Reverse(head *ListNode) *ListNode{
 	return pre
 }
 
+// 时间复杂度 O(n)
+// 空间复杂度 O(1)
+func reverseList (head *ListNode) *ListNode {
+	var prev *ListNode
+	current := head
+	for current != nil {
+		next := current.Next
+		current.Next = prev
+		prev = current
+		current = next
+	}
+	return prev
+}
+
 //构建链表
 func convertListNode(s []int) *ListNode {
 	sLen := len(s)
