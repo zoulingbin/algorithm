@@ -19,7 +19,7 @@ func Reverse(head *ListNode) *ListNode{
 
 // 时间复杂度 O(n)
 // 空间复杂度 O(1)
-func reverseList (head *ListNode) *ListNode {
+func ReverseList (head *ListNode) *ListNode {
 	var prev *ListNode
 	current := head
 	for current != nil {
@@ -32,7 +32,7 @@ func reverseList (head *ListNode) *ListNode {
 }
 
 //构建链表
-func convertListNode(s []int) *ListNode {
+func ConvertListNode(s []int) *ListNode {
 	sLen := len(s)
 	if sLen == 0 {
 		return nil
@@ -51,7 +51,7 @@ func convertListNode(s []int) *ListNode {
 }
 
 //打印链表
-func (l *ListNode) printListNode() {
+func (l *ListNode) PrintListNode() {
 	var s []int
 	pointer := l
 	for pointer != nil {
