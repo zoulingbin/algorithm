@@ -8,21 +8,16 @@ type Node struct {
 	Right 	*Node
 }
 
-//构建二叉树
-var i = -1
-func BuildTree(array []int) *Node {
-	i += 1
-	if i >= len(array) {
-		return nil
+func BuildTree(i int, arr []int) *Node {
+	t := &Node{arr[i], nil, nil}
+	if i<len(arr) && 2*i+1 < len(arr) {
+		t.Left = BuildTree(2*i+1, arr)
 	}
-	t := new(Node)
-	if array[i] != 0 {
-		t.Value = array[i]
-		t.Left = BuildTree(array)
-		t.Right = BuildTree(array)
-	} else {
-		return nil
+	// fmt.Println("-----------------------", i)
+	if i<len(arr) && 2*i+2 < len(arr) {
+		t.Right = BuildTree(2*i+2, arr)
 	}
+	// fmt.Println("************************", i, t.Data)
 	return t
 }
 
